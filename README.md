@@ -26,7 +26,7 @@ mv custom.eqn custom/custom.eqn
 ```
 cmake ../CodeDir -DRUNDIR=.. -DCUSTOMMECH=y; make -j install
 ```
-6. Run the model (faster + similar accuracy)!  
+6. Run the model faster than with the BASE mechanism!  
 
 ### For more information on how to use KPP and GEOS-Chem, please see the following:
 
