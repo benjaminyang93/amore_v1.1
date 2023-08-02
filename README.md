@@ -1,11 +1,11 @@
 # GEOS-Chem Kinetic PreProcessor (KPP) Files
-### Species and equations for the full chemistry mechanisms in KPP v2.3.3 (GEOS-Chem Classic v13.3.3)
+### Species and equations for chemical mechanisms in KPP v2.3.3 (GEOS-Chem Classic v13.3.3)
 
 **custom_eqn.txt**: includes the Automated Model Reduction (AMORE) v1.1 isoprene oxidation mechanism 
 
 **fullchem_eqn.txt**: includes the default isoprene oxidation mechanism (BASE)
 
-# Implementing the AMORE mechanism in KPP
+# Implementing the AMORE mechanism in KPP and GEOS-Chem 
 1. Navigate to your KPP directory (in Linux)
 ```
 cd ~/GCClassic/src/GEOS-Chem/KPP
@@ -14,18 +14,22 @@ cd ~/GCClassic/src/GEOS-Chem/KPP
 ```
 wget https://github.com/benjaminyang93/amore_v1.1/blob/main/custom.eqn
 ```
-4. Overwrite the existing "custom" mechanism file
+3. Overwrite the existing "custom" mechanism file
 ```
 mv custom.eqn custom/custom.eqn
 ```
-6. Run KPP to create new chemical solver Fortran-90 files
+4. Run KPP to create new chemical solver Fortran-90 files
 ```
 ./build_mechanism.sh custom
 ```
-For more https://kpp.readthedocs.io/en/stable/
+5. Navigate to your GEOS-Chem build directory and recompile
+```
+cmake ../CodeDir -DRUNDIR=.. -DCUSTOMMECH=y; make -j install
+```
+6. Run the model (faster + similar accuracy)!  
 
-5. Recompile model (cmake ../CodeDir -DRUNDIR=.. -DCUSTOMMECH=y)
+### For more information on how to use KPP and GEOS-Chem, please see the following:
 
-### For more information about how to use KPP and GEOS-Chem, please see the following guides:
 https://kpp.readthedocs.io/en/stable/index.html
+
 https://geos-chem.readthedocs.io/en/stable/
