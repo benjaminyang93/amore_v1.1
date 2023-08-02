@@ -8,11 +8,11 @@
 ## Implementing the AMORE mechanism in KPP and GEOS-Chem 
 1. Navigate to your KPP directory (in Linux)
 ```
-cd ~/GCClassic/src/GEOS-Chem/KPP
+cd <path>/GCClassic/src/GEOS-Chem/KPP
 ```
 2. Download the "custom.eqn" file from GitHub
 ```
-wget https://github.com/benjaminyang93/amore_v1.1/blob/main/custom.eqn
+wget https://raw.githubusercontent.com/benjaminyang93/amore_v1.1/main/custom.eqn
 ```
 3. Overwrite the existing "custom" mechanism file
 ```
@@ -32,4 +32,4 @@ cmake ../CodeDir -DRUNDIR=.. -DCUSTOMMECH=y; make -j install
 
 https://kpp.readthedocs.io/en/stable/index.html
 
-https://geos-chem.readthedocs.io/en/stable/
+https://geos-chem.readthedocs.io/en/stable
