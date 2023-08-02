@@ -1,9 +1,9 @@
 ## GEOS-Chem Kinetic PreProcessor (KPP) Chemical Mechanism Files
 ### Species and equations in KPP v2.3.3 (GEOS-Chem Classic v13.3.3)
 
-**custom_eqn.txt**: includes the Automated Model Reduction (AMORE) v1.1 isoprene oxidation mechanism 
+* **custom_eqn.txt**: includes the Automated Model Reduction (AMORE) v1.1 isoprene oxidation mechanism 
 
-**fullchem_eqn.txt**: includes the default isoprene oxidation mechanism (BASE)
+* **fullchem_eqn.txt**: includes the default isoprene oxidation mechanism (BASE)
 
 ## Implementing the AMORE mechanism in KPP and GEOS-Chem 
 1. Navigate to your KPP directory (in Linux)
