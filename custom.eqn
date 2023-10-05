@@ -302,7 +302,6 @@ ISALC      = IGNORE; {I; Coarse sea salt iodine}
 ISOP       = IGNORE; {CH2=C(CH3)CH=CH2; Isoprene}
 INO2B       = IGNORE; {Isoprene nitrate} //INO2 //ICN
 IHOO1      = IGNORE; {Isoprene peroxy radical} //IHOO
-IDCHP      = IGNORE; {Isoprene peroxide} //ISHP
 IHN1       = IGNORE; {Isoprene hydroxy-nitrate} //IHN
 INPB       = IGNORE; {Isoprene peroxy nitrate} //IPN
 IDN        = IGNORE; {Lumped higher order isoprene nitrates} //ISON
@@ -402,6 +401,7 @@ RA3P       = IGNORE; {CH3CH2CH2OOH; Peroxide from A3O2}
 RB3P       = IGNORE; {CH3CH(OOH)CH3; Peroxide from B3O2}
 RCHO       = IGNORE; {CH3CH2CHO; >= C3 aldehydes}
 RCO3       = IGNORE; {CH3CH2C(O)OO; Peroxypropionyl radical}
+RIPA       = IGNORE; {HOCH2C(OOH)(CH3)CH=CH2; 1,2-ISOPOOH} //ISHP
 ROH        = IGNORE; {C3H7OH; > C2 alcohols}
 RP         = IGNORE; {CH3CH2C(O)OOH; Peroxide from RCO3}
 //SALAAL	   = IGNORE; {Accumulation mode seasalt aerosol alkalinity}
@@ -493,11 +493,11 @@ ISOP + O3 = 0.189MVK + 0.58CH2O + 0.25OH +
 ISOP + NO3 = INO2B + 0.3CH2O + 0.3NO2 + 
  0.3IDN + LISOPNO3 : 			       GCARR_ac(2.95d-12, -450d0);							       {AMORE, 4/26/22}
 ISOP + OH = IHOO1 + 0.02MO2 + LISOPOH :	       GCARR_ac(2.69d-11,390d0);							       {AMORE, 4/26/22}
-IHOO1 + HO2 = IDCHP + 0.6HO2 + 0.15CH2O :      GCARR_ac(4.5d-13,1300d0);							       {AMORE, 4/26/22}
+IHOO1 + HO2 = RIPA + 0.6HO2 + 0.15CH2O :      GCARR_ac(4.5d-13,1300d0);							       {AMORE, 4/26/22}
 IHOO1 + NO = 0.14IHN1 + 0.7CH2O + 0.44MVK + 
  0.88HO2 + 0.78NO2 + 0.28MACR +
  0.021GLYX :     			     GCARR_ac(2.7d-12,350d0);							       {AMORE, 4/26/22}
-IDCHP + OH = IHOO1 :        	      	     GCARR_ac(4.6d-12,200d0);							       {AMORE, 4/26/22}	              
+RIPA + OH = IHOO1 :        	      	     GCARR_ac(4.6d-12,200d0);							       {AMORE, 4/26/22}	              
 INO2B + HO2 = INPB + OH :       	             GCARR_ac(3.14d-14, 580d0);						       {AMORE, 4/26/22}
 INO2B + NO = 0.9CH2O + 0.5MGLY + 
  0.8MVK + 0.5NO2 + HO2 + 0.2IDN +
@@ -507,7 +507,7 @@ INPB + HO2 = 0.8NO2 + 0.4CH2O +
  HO2 + 0.94MVK + 0.2IDN +
  0.1MO2 : 			             GCARR_ac(3.4d-11, 390d0);							       {AMORE, 4/26/22}
 IHN1 + OH = IDN + OH + 0.2IEPOXA :            GCARR_ac(2.4d-7, 580d0);							       {AMORE, 4/26/22}
-IDCHP + OH = 0.15CH2O + 0.05MGLY + 
+RIPA + OH = 0.15CH2O + 0.05MGLY + 
  0.15MACR + 0.02GLYX + 0.2MVK +
  0.05IDC + 0.58IEPOXA + 0.8OH :              GCARR_ac(2.97d-11, 390d0);						       {AMORE, 4/26/22}
 IDC + NO = 0.35NO2 + 0.8NO :   	             1.0d-10;									       {AMORE, 4/26/22}
@@ -1277,7 +1277,7 @@ NPHEN = AONITA :               VOCuptk1stOrd( SR_MW(ind_NPHEN), 1.0E-2_dp, State
 // %%%%% Photolysis reactions                                            %%%%%
 // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 //
-IDCHP + hv = 0.4CH2O + 0.1MGLY + 0.06MCO3 :  PHOTOL(157);    {AMORE, 4/26/22}
+RIPA + hv = 0.4CH2O + 0.1MGLY + 0.06MCO3 :   PHOTOL(138);    {AMORE, 4/26/22}
 O3 + hv = O + O2 :                           PHOTOL(2);      {2014/02/03; Eastham2014; SDE}
 O3 + hv = O1D + O2 :                         PHOTOL(3);      {2014/02/03; Eastham2014; SDE}
 O2 + hv = 2.000O :                           PHOTOL(1);      {2014/02/03; Eastham2014; SDE}
